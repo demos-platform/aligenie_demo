@@ -1,0 +1,16 @@
+language: node_js
+
+node_js:
+    - 8
+
+install:
+    - npm install -g yarn
+    - yarn global add codecov
+    - yarn global add istanbul
+
+script:
+    - yarn install
+    - yarn test
+    - istanbul cover ./node_modules/mocha/bin/_mocha --reporter test -- -R spec
+    - codecov --token="bebea94b-9ce7-4c72-839b-446443319c46"
+
